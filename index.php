@@ -1,36 +1,51 @@
 <?php
-  function alert($msg) {
+function alert($msg) {
     echo "<script type='text/javascript'>alert('$msg');</script>";
   }
+if(isset($_POST['submit'])){
+	#getting details of file
+	$file = $_FILES['file'];
+	$fileName = $_FILES['file']['name'];
+	$fileTmpName = $_FILES['file']['tmp_name'];
+	$fileSize = $_FILES['file']['size'];
+	$fileError = $_FILES['file']['error'];
+	$fileType = $_FILES['file']['type'];
+	#convert filename string to array
+	$fileExt = explode('.',$fileName);
+	#convert file extension to lowercase
+	$fileActualExt = strtolower(end($fileExt));
+	$allowed = array('jpg', 'jpeg', 'png');
+	#check for allowed extensions
+	if(in_array($fileActualExt, $allowed)){
+		if($fileError === 0){
+			if($fileSize<5000000){
+				$fileDestination = "input/".$fileName;
+				if(move_uploaded_file($fileTmpName, $fileDestination)){
+					alert("upload Success!");
+					$cmd='python scripts/blur.py '.'"'.$fileName.'" '.$fileActualExt;
+					echo $cmd;
+					$cout=shell_exec($cmd);
+				}
+				else { alert("Failed!"); }
+			}
+			else { alert("Your file is too big"); }
+		}
+		else { alert("There was an error"); }
+	}
+	else { alert("Invalid file type"); }
+}
 
-  if (isset($_POST['upload']))
-  {
-    $image = $_FILES['image']['name'];
-  	$target = "input/".basename($image);
-   	if (move_uploaded_file($_FILES['image']['tmp_name'],$target)) {
-   		alert("upload Success!");
-   		$cmd='python3.6 scripts/blur.py '.'"'.$_FILES['image']['name'].'"';
-      echo $cmd;
-      $cmd_out=shell_exec($cmd);
-      echo '<br>'.$cmd_out;
-  	}else{
-  		alert("Failed!");
-  		print_r($_FILES);
-  	}
-  }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Image Upload</title>
+	<title></title>
 </head>
 <body>
-<div id="content" style="margin-top: 300px;" align="center">
-  <form method="POST" action="index.php" enctype="multipart/form-data">
-  	<input type="file" name="image"/>
-  	<button type="submit" name="upload">Upload</button>
-  </form>
-</div>
+	<form action="index.php" method="POST" enctype="multipart/form-data">
+		<input type="file" name="file">
+		<button type="submit" name="submit">UPLOAD</button>
+	</form>
 </body>
 </html>
