@@ -1,51 +1,151 @@
 <?php
+session_start();
+#displaying alert boxes
 function alert($msg) {
     echo "<script type='text/javascript'>alert('$msg');</script>";
   }
-if(isset($_POST['submit'])){
+
+#uploading the image
+if(isset($_POST['upload'])){
+	if(!empty($_FILES['file']['name'])){
 	#getting details of file
-	$file = $_FILES['file'];
-	$fileName = $_FILES['file']['name'];
+	$_SESSION['fileName'] = $_FILES['file']['name'];
 	$fileTmpName = $_FILES['file']['tmp_name'];
 	$fileSize = $_FILES['file']['size'];
 	$fileError = $_FILES['file']['error'];
 	$fileType = $_FILES['file']['type'];
+
 	#convert filename string to array
-	$fileExt = explode('.',$fileName);
+	$fileExt = explode('.',$_SESSION['fileName']);
+	
 	#convert file extension to lowercase
-	$fileActualExt = strtolower(end($fileExt));
+	$_SESSION['fileActualExt'] = strtolower(end($fileExt));
 	$allowed = array('jpg', 'jpeg', 'png');
+	
 	#check for allowed extensions
-	if(in_array($fileActualExt, $allowed)){
+	if(in_array($_SESSION['fileActualExt'], $allowed)){
 		if($fileError === 0){
 			if($fileSize<5000000){
-				$fileDestination = "input/".$fileName;
+				$fileDestination = "input/".$_SESSION['fileName'];
 				if(move_uploaded_file($fileTmpName, $fileDestination)){
-					alert("upload Success!");
-					$cmd='python scripts/blur.py '.'"'.$fileName.'" '.$fileActualExt;
-					echo $cmd;
-					$cout=shell_exec($cmd);
+					unset($_SESSION['outfile']);
+					alert("Success!");
 				}
 				else { alert("Failed!"); }
 			}
 			else { alert("Your file is too big"); }
 		}
-		else { alert("There was an error"); }
+		else { alert("File error"); }
 	}
 	else { alert("Invalid file type"); }
+}else { alert("NO file was selected"); }
 }
 
+	#Applying filter
+	if(isset($_POST['apply_filter'])){
+		if(!empty($_SESSION['fileName'])){
+			if($_POST['filter']=='blur'){
+				$cmd='python scripts/blur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt'];
+				$cout=shell_exec($cmd);
+				$_SESSION['outfile']=$cout;
+				//echo $cout;
+			}
+			elseif($_POST['filter']=='gblur')
+			{
+				$cmd='python scripts/gblur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt'];
+				$cout=shell_exec($cmd);
+			}
+		}
+		else { alert('Upload an image first.'); }
+	}
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
+	<title>Image Processing Portal</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!--<link href="css/mdb.min.css" rel="stylesheet">-->
+	<link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-	<form action="index.php" method="POST" enctype="multipart/form-data">
-		<input type="file" name="file">
-		<button type="submit" name="submit">UPLOAD</button>
-	</form>
+	<!-- SCRIPTS -->
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/popper.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/mdb.js"></script>
+	<!-- MAIN CONTENT -->
+	<div class="container-fluid">
+		<div class="row"><div class="col-md-12"><hr><h2 class="text-center">Welcome to Image Processing Portal</h1><hr><h3 class="text-center">Upload an Image</h3></div></div>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+			<!-- file upload -->
+			<form action="index.php" method="POST" enctype="multipart/form-data">
+			<div class="custom-file">
+			<input type="file" class="custom-file-input" id="customFile" name="file">
+			<label class="custom-file-label" for="customFile">Choose file (.jpg, .jpeg, .png)</label>
+			</div>
+			</div>
+			<div class="col-md-4">
+			<button type="submit" name="upload" class="btn btn-primary">UPLOAD</button>
+			</div>
+			</form>
+		</div><br>
+		<div class="row">
+			<div class="col-md-2">
+				<h3 class="text-center">Select Filter</h3>
+				<!-- filter selection -->
+				 <form action="index.php" method="POST">
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input filter-list" id="customCheck1" name="filter" value="blur">
+						<label class="custom-control-label" for="customCheck1">Blur</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input filter-list" id="customCheck2" name="filter" value="gblur">
+						<label class="custom-control-label" for="customCheck2">Gaussian Blur</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input filter-list" id="customCheck3" name="filter" value="mblur">
+						<label class="custom-control-label" for="customCheck3">Median Blur</label>
+					</div><br>
+					<!-- To select only one filter -->
+					<script type="text/javascript">
+						$('.filter-list').on('change', function() {
+						$('.filter-list').not(this).prop('checked', false);  
+						});
+					</script>
+					<button type="submit" name="apply_filter" class="btn btn-primary">Apply</button>
+				</form>
+
+			</div>
+			<div class="col-md-5">
+				<h3 class="text-center">Before</h3>
+				<?php
+					if(!empty($_SESSION['fileName'])){
+						$source='input/'.$_SESSION['fileName'];
+						if(file_exists($source)){
+							echo '<img src=\''.$source.'\' class=\'img-thumbnail img-fluid\' height=\'480\' width=\'640\'>';
+						}
+					}
+				?>
+			</div>
+			<div class="col-md-5">
+				<h3 class="text-center">After</h3>
+				<?php
+					//echo $_SESSION['outfile'];
+					if(isset($_SESSION['outfile'])){
+						echo '<img src=\''.$_SESSION['outfile'].'\' class=\'img-thumbnail img-fluid\' height=\'480\' width=\'640\'>';
+						if(file_exists($_SESSION['outfile'])){
+							//echo '<img src=\''.$_SESSION['outfile'].'\' class=\'img-thumbnail img-fluid\' height=\'480\' width=\'640\'>';
+						}
+					}
+				?>
+			</div>
+		</div>
+	</div> <!-- CONTAINER DIV ENDS-->
 </body>
 </html>
