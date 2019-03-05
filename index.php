@@ -54,7 +54,15 @@ if(isset($_POST['upload'])){
 			{
 				$cmd='python scripts/gblur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt'];
 				$cout=shell_exec($cmd);
+				$_SESSION['outfile']=$cout;
 			}
+			elseif($_POST['filter']=='mblur')
+			{
+				$cmd='python scripts/mblur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt'];
+				$cout=shell_exec($cmd);
+				$_SESSION['outfile']=$cout;
+			}
+			else{ alert('Invalid filter'); }
 		}
 		else { alert('Upload an image first.'); }
 	}
