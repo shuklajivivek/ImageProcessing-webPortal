@@ -78,15 +78,11 @@ if(isset($_POST['upload'])){
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!--<link href="css/mdb.min.css" rel="stylesheet">-->
-	<link rel="stylesheet" href="css/home.css">
 </head>
 <body>
 	<!-- SCRIPTS -->
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="js/popper.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/mdb.js"></script>
 	<!-- MAIN CONTENT -->
 	<div class="container-fluid">
 		<div class="row"><div class="col-md-12"><hr><h2 class="text-center">Welcome to Image Processing Portal</h1><hr><h3 class="text-center">Upload an Image</h3></div></div>
@@ -138,21 +134,22 @@ if(isset($_POST['upload'])){
 
 			</div>
 			<div class="col-md-5">
-				<h3 class="text-center">Before</h3>
 				<?php
 					if(!empty($_SESSION['fileName'])){
 						$source='input/'.$_SESSION['fileName'];
 						if(file_exists($source)){
+							echo '<h3 class=\'text-center\'>Before</h3>';
 							echo '<img src=\''.$source.'\' class=\'img-thumbnail img-fluid\' height=\'480\' width=\'640\'>';
 						}
 					}
 				?>
 			</div>
 			<div class="col-md-5">
-				<h3 class="text-center">After <?php if(isset($_SESSION['filter_name'])) echo $_SESSION['filter_name']; ?></h3>
 				<?php
 					if(isset($_SESSION['outfile'])){
 						if(file_exists($_SESSION['outfile'])){
+							if(isset($_SESSION['filter_name']))
+								echo '<h3 class=\'text-center\'>After '.$_SESSION['filter_name'].'</h3>';
 							echo '<img src=\''.$_SESSION['outfile'].'\' class=\'img-thumbnail img-fluid\' height=\'480\' width=\'640\'>';
 						}
 					}
