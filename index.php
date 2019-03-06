@@ -44,25 +44,21 @@ if(isset($_POST['upload'])){
 	#Applying filter
 	if(isset($_POST['apply_filter'])){
 		if(!empty($_SESSION['fileName'])){
-			if($_POST['filter']=='blur'){
-				$cmd='python scripts/blur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt'];
-				$cout=shell_exec($cmd);
-				$_SESSION['outfile']=$cout;
-				//echo $cout;
-			}
-			elseif($_POST['filter']=='gblur')
+			if(isset($_POST['filter']))
+				$filter=$_POST['filter'];
+			else { $filter="null"; alert('Invalid filter'); }
+			switch ($filter)
 			{
-				$cmd='python scripts/gblur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt'];
-				$cout=shell_exec($cmd);
-				$_SESSION['outfile']=$cout;
+				case "blur": $cmd='python scripts/blur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
+				case "gblur": $cmd='python scripts/gblur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
+				case "mblur": $cmd='python scripts/mblur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
+				case "bilateral": $cmd='python scripts/bilateral.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
 			}
-			elseif($_POST['filter']=='mblur')
+			if(!empty($cmd))
 			{
-				$cmd='python scripts/mblur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt'];
 				$cout=shell_exec($cmd);
 				$_SESSION['outfile']=$cout;
 			}
-			else{ alert('Invalid filter'); }
 		}
 		else { alert('Upload an image first.'); }
 	}
@@ -119,6 +115,10 @@ if(isset($_POST['upload'])){
 					<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input filter-list" id="customCheck3" name="filter" value="mblur">
 						<label class="custom-control-label" for="customCheck3">Median Blur</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input filter-list" id="customCheck4" name="filter" value="bilateral">
+						<label class="custom-control-label" for="customCheck4">Bilateral Filter</label>
 					</div><br>
 					<!-- To select only one filter -->
 					<script type="text/javascript">
@@ -144,12 +144,8 @@ if(isset($_POST['upload'])){
 			<div class="col-md-5">
 				<h3 class="text-center">After</h3>
 				<?php
-					//echo $_SESSION['outfile'];
 					if(isset($_SESSION['outfile'])){
 						echo '<img src=\''.$_SESSION['outfile'].'\' class=\'img-thumbnail img-fluid\' height=\'480\' width=\'640\'>';
-						if(file_exists($_SESSION['outfile'])){
-							//echo '<img src=\''.$_SESSION['outfile'].'\' class=\'img-thumbnail img-fluid\' height=\'480\' width=\'640\'>';
-						}
 					}
 				?>
 			</div>
