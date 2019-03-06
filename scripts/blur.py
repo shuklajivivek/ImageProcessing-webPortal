@@ -16,6 +16,6 @@ def main():
 	newname=fname+'-blur.'+ext
 	outfile='output/'+newname
 	cv2.imwrite(outfile,blur)
-	print(outfile)
+	print(outfile,end='')
 
 if __name__=="__main__": main()

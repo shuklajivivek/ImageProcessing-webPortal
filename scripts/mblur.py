@@ -15,4 +15,4 @@ fname=oldname[0:len(oldname)-len(ext)-1]
 newname=fname+'-mblur.'+ext
 outfile='output/'+newname
 cv2.imwrite(outfile,mblur)
-print(outfile)
+print(outfile,end='')

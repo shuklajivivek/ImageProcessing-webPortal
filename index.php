@@ -49,10 +49,10 @@ if(isset($_POST['upload'])){
 			else { $filter="null"; alert('Invalid filter'); }
 			switch ($filter)
 			{
-				case "blur": $cmd='python scripts/blur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
-				case "gblur": $cmd='python scripts/gblur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
-				case "mblur": $cmd='python scripts/mblur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
-				case "bilateral": $cmd='python scripts/bilateral.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
+				case "blur": $_SESSION['filter_name']='Blurring'; $cmd='python scripts/blur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
+				case "gblur": $_SESSION['filter_name']='Gaussian Blurring'; $cmd='python scripts/gblur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
+				case "mblur": $_SESSION['filter_name']='Median Blurring'; $cmd='python scripts/mblur.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
+				case "bilateral": $_SESSION['filter_name']='Bilateral Filtering'; $cmd='python scripts/bilateral.py '.'"'.$_SESSION['fileName'].'" '.$_SESSION['fileActualExt']; break;
 			}
 			if(!empty($cmd))
 			{
@@ -61,6 +61,12 @@ if(isset($_POST['upload'])){
 			}
 		}
 		else { alert('Upload an image first.'); }
+	}
+	
+	#Destroy session
+	if(isset($_POST['reset'])){
+		session_unset();
+		session_destroy();
 	}
 ?>
 
@@ -85,7 +91,7 @@ if(isset($_POST['upload'])){
 	<div class="container-fluid">
 		<div class="row"><div class="col-md-12"><hr><h2 class="text-center">Welcome to Image Processing Portal</h1><hr><h3 class="text-center">Upload an Image</h3></div></div>
 		<div class="row">
-			<div class="col-md-4"></div>
+			<div class="col-md-3"></div>
 			<div class="col-md-4">
 			<!-- file upload -->
 			<form action="index.php" method="POST" enctype="multipart/form-data">
@@ -94,8 +100,9 @@ if(isset($_POST['upload'])){
 			<label class="custom-file-label" for="customFile">Choose file (.jpg, .jpeg, .png)</label>
 			</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-5">
 			<button type="submit" name="upload" class="btn btn-primary">UPLOAD</button>
+			<button type="submit" name="reset" class="btn btn-danger">RESET</button>
 			</div>
 			</form>
 		</div><br>
@@ -142,10 +149,12 @@ if(isset($_POST['upload'])){
 				?>
 			</div>
 			<div class="col-md-5">
-				<h3 class="text-center">After</h3>
+				<h3 class="text-center">After <?php if(isset($_SESSION['filter_name'])) echo $_SESSION['filter_name']; ?></h3>
 				<?php
 					if(isset($_SESSION['outfile'])){
-						echo '<img src=\''.$_SESSION['outfile'].'\' class=\'img-thumbnail img-fluid\' height=\'480\' width=\'640\'>';
+						if(file_exists($_SESSION['outfile'])){
+							echo '<img src=\''.$_SESSION['outfile'].'\' class=\'img-thumbnail img-fluid\' height=\'480\' width=\'640\'>';
+						}
 					}
 				?>
 			</div>
