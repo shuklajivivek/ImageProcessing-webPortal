@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Select Filter</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -25,13 +25,12 @@
 	</div>
 	
 	<div id="smoothening" class="zoomdiv">
-		<h2>Smoothening Filters</h2>
+		<h2>Image Blurring</h2>
 		<ul>
-		      <li><a href="filters/php/blurindex.php">Blur</a></li>
-		      <li><a href="filters/php/blurindex.php">Averaging</a></li>
-		      <li><a href="filters/php/median.php">Median</a></li>
-		      <li><a href="filters/php/gauss.php">Gaussian</a>
-		      <li><a href="filters/php/bilateral.php">Bilateral</a></li>
+		      <li><a href="filters/php/blur_avg.php">Averaging</a></li>
+		      <li><a href="filters/php/blur_gauss.php">Gaussian Blurring</a></li>
+		      <li><a href="filters/php/blur_med.php">Median Blurring</a>
+		      <li><a href="filters/php/blur_bilat.php">Bilateral Filtering</a></li>
 		</ul>
 	</div>
 
