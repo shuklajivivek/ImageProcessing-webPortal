@@ -84,7 +84,7 @@
 		<!-- Footer Elements -->
 		<!-- Copyright -->
 		<div class="footer-copyright text-center py-3">© 2019 Copyright:
-			<a href="http://127.0.0.1/ip-2"> ImageProcessing</a>
+			<a href="http://127.0.0.1/ip"> ImageProcessing</a>
 		</div>
 		<!-- Copyright -->
 		</footer>

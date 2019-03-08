@@ -27,10 +27,10 @@
 	<div id="smoothening" class="zoomdiv">
 		<h2>Image Blurring</h2>
 		<ul>
-		      <li><a href="filters/php/blur_avg.php">Averaging</a></li>
-		      <li><a href="filters/php/blur_gauss.php">Gaussian Blurring</a></li>
-		      <li><a href="filters/php/blur_med.php">Median Blurring</a>
-		      <li><a href="filters/php/blur_bilat.php">Bilateral Filtering</a></li>
+		      <li><a href="filters/blur_php/blur_avg.php">Averaging</a></li>
+		      <li><a href="filters/blur_php/blur_gauss.php">Gaussian Blurring</a></li>
+		      <li><a href="filters/blur_php/blur_med.php">Median Blurring</a>
+		      <li><a href="filters/blur_php/blur_bilat.php">Bilateral Filtering</a></li>
 		</ul>
 	</div>
 
@@ -39,6 +39,19 @@
 		<ul>
 		      <li><a href="#">Plotting Histogram</a></li>
 		      <li><a href="#">Histogram Equilization</a></li>
+		</ul>
+	</div>
+	
+	<div id="smoothening" class="zoomdiv">
+		<h2>Morphological Transformation</h2>
+		<ul>
+		      <li><a href="filters/morph_trans_php/erosion.php">Erosion</a></li>
+		      <li><a href="filters/morph_trans_php/dilation.php">Dilation</a></li>
+			  <li><a href="filters/morph_trans_php/open.php">Opening</a></li>
+			  <li><a href="filters/morph_trans_php/close.php">Closing</a></li>
+			  <li><a href="filters/morph_trans_php/grad.php">Morphological Gradient</a></li>
+			  <li><a href="filters/morph_trans_php/that.php">Top Hat</a></li>
+			  <li><a href="filters/morph_trans_php/bhat.php">Black Hat</a></li>
 		</ul>
 	</div>
 </body>
