@@ -31,13 +31,12 @@ if(isset($_POST['upload'])){
 				if(move_uploaded_file($fileTmpName, $fileDestination)){
 					header('Location: filters.php');
 				}
-				else { alert("Failed!"); }
+				else { $_SESSION['err']=1; header('location:index.php'); }
 			}
-			else { alert("File size limit exceeded"); }
+			else { $_SESSION['err']=2; header('location:index.php'); }
 		}
-		else { alert("File error"); }
-	}
-	else { alert("Invalid file type"); }
+		else { $_SESSION['err']=3; header('location:index.php'); }
+	}else { $_SESSION['err']=4; header('location:index.php'); }
 }else { $_SESSION['err']=5; header('location:index.php');}
 }
 

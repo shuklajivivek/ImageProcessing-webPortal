@@ -36,7 +36,27 @@
 	  	
 			<form style="margin-left: 550px; margin-top: 10%" action="upload.php" method="POST" enctype="multipart/form-data">
 				<label><input id="choose" class="btn peach-gradient" type="file" name="file"></label>
-				<button class="btn peach-gradient" type="submit" name="upload">UPLOAD</button>
+				<button class="btn peach-gradient" type="submit" name="upload">UPLOAD</button><br>
+				<?php
+					session_start();
+					if(isset($_SESSION['err']))
+					{
+						if($_SESSION['err']==1)
+							$msg='Failed to upload to the server !';
+						if($_SESSION['err']==2)
+							$msg='File size limit exceeded (should be less than 5MB)';
+						if($_SESSION['err']==3)
+							$msg='Unsupported image file !';
+						if($_SESSION['err']==4)
+							$msg='Invalid file selected !';
+						if($_SESSION['err']==5)
+							$msg='Please select a file first !';
+						echo '<label><div class="alert alert-danger alert-dismissible fade show">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<strong>'.$msg.'</strong></div></label>';
+						unset($_SESSION['err']);
+					}
+				?>
 			</form>
 		</div>
 		<footer style="margin-top: 30%;" class="page-footer font-small cyan darken-3">
