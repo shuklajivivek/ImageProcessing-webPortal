@@ -26,12 +26,13 @@
 .main {
 	padding: 16px;
 	margin-top: 30px;
-	height: 150px; /* Used in this example to enable scrolling */
+	height: 150px;
 }
 
 #heading{
 	box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, .9);
-	padding: 40px;
+	padding: 5px;
+	margin-top:5px;
 	background-color: #232323;
 }
 
@@ -41,37 +42,17 @@ h1{
 	color:#e8e8e8;
 }
 
-#smoothening
+#filter-box
 {
 	background-color: #1a3a3d;
 	margin-top:10%;
 	margin-left: 40px;
-	/*padding: 30px;
-	padding-right: 0px;
-	padding-left: 0px;*/
 	box-shadow: 0px 3px 7px 2px rgba(0, 0, 0, .9);
 	float: left;
-	width: 500px;
-	margin-left: 100px;
-	/*text-align: center;*/
-}
-
-#sharpening
-{
-	background-color: #1a3a3d;
-	margin-right: 40px;
-	padding:30px;
-	margin-top:10%;
-	box-shadow: 0px 3px 7px 2px rgba(0, 0, 0, .9);
-	float: right;
-	width: 500px;
-	margin-right: 100px;
-	padding-right: 0px;
-	padding-left: 0px;
 }
 
 h2{
-	padding: 20px;
+	padding: 10px;
 	margin-top: 0px;
 	background: white;
 	text-align: center;
@@ -99,12 +80,7 @@ li{
 	padding: 15px;
 }
 
-#smoothening ul li:hover
-{
-	background:#2d2d2d;
-}
-
-#sharpening ul li:hover
+#filter-box ul li:hover
 {
 	background:#2d2d2d;
 }
@@ -112,9 +88,7 @@ li{
 .zoomdiv {
 	padding: 50px;
 	background-color: transparent;
-	transition: transform .3s; /* Animation */
-	/*width: 200px;
-	height: 200px;*/
+	transition: transform .3s;
 	margin: 0 auto;
 }
 

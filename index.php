@@ -22,9 +22,9 @@
 	<div class="bg">
 		<p class="py-5 text-center"></p>
 		<div class="navbar">
-			<h2 class="animated fadeInLeft" style="color: white; padding: 40px;">Image Processing</h2>
+			<h2 class="animated fadeInLeft" style="color: white;">Image Processing</h2>
 			<a class="animated fadeInRight" style="margin-left: 40%" href="#home"><i class="fas fa-home"></i>Home</a>
-			<a class="animated fadeInRight" href="#news"><i class="fas fa-filter"></i>Filters</a>
+			<a class="animated fadeInRight" href="#filters"><i class="fas fa-filter"></i>Filters</a>
 			<a class="animated fadeInRight" href="#contact"><i class="fas fa-phone"></i>Contact</a>
 		</div>
 
@@ -34,7 +34,7 @@
 				<p id="para">Upload image and choose filters</p>	
 			</div>
 	  	
-			<form style="margin-left: 550px; margin-top: 10%" action="upload.php" method="POST" enctype="multipart/form-data">
+			<form style="margin-left: 510px; margin-top: 10%" action="upload.php" method="POST" enctype="multipart/form-data">
 				<label><input id="choose" class="btn peach-gradient" type="file" name="file"></label>
 				<button class="btn peach-gradient" type="submit" name="upload">UPLOAD</button><br>
 				<?php

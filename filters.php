@@ -21,10 +21,10 @@
 	<script type="text/javascript" src="js/mdb.js"></script>
 
 	<div class="animated fadeInLeft" id="heading">
-		<h1><img src="img/filter.png" width="40px" height="40px;"  style="margin-top: 0px;">CHOOSE &nbsp;&nbsp;FILTERS</h1>
+		<h1>CHOOSE &nbsp;&nbsp;FILTERS <img src="img/filter.png"></h1>
 	</div>
 	
-	<div id="smoothening" class="zoomdiv">
+	<div id="filter-box" class="zoomdiv" style='height: 340px; width: 400px;'>
 		<h2>Image Blurring</h2>
 		<ul>
 		      <li><a href="filters/blur_php/blur_avg.php">Averaging</a></li>
@@ -33,16 +33,8 @@
 		      <li><a href="filters/blur_php/blur_bilat.php">Bilateral Filtering</a></li>
 		</ul>
 	</div>
-
-	<div id="sharpening" class="zoomdiv">
-		<h2>Histogram</h2>
-		<ul>
-		      <li><a href="#">Plotting Histogram</a></li>
-		      <li><a href="#">Histogram Equilization</a></li>
-		</ul>
-	</div>
 	
-	<div id="smoothening" class="zoomdiv">
+	<div id="filter-box" class="zoomdiv" style='width: 500px; height: 465px'>
 		<h2>Morphological Transformation</h2>
 		<ul>
 		      <li><a href="filters/morph_trans_php/erosion.php">Erosion</a></li>
