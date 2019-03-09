@@ -1,28 +1,14 @@
 <?php
-	shell_exec('python ../morph_trans_py/that.py');
+	session_start();
+	$result=shell_exec('python ../morph_trans_py/that.py');
+	if(strcasecmp($result,'success')==0)
+	{
+		//set session variables for use in display.php
+		$_SESSION['title']='Morphological Transformation';
+		$_SESSION['filter']='After Top Hat';
+		$_SESSION['outimg']='images/abc_morph_that.jpg';
+		
+		//call display.php
+		header('Location: ../../display.php');
+	}
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Morphological Transformation</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<link href="../../css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<h3 class="text-center">Before</h3>
-				<?php echo '<img src=\'../../images/abc.jpg\' class=\'img-thumbnail img-fluid\'>'; ?>
-			</div>
-			<div class="col-md-6">
-				<h3 class="text-center">After Top Hat</h3>
-				<?php echo '<img src=\'../../images/abc_morph_that.jpg\' class=\'img-thumbnail img-fluid\'>'; ?>
-			</div>
-		</div>
-	</div>
-</body>
-</html>

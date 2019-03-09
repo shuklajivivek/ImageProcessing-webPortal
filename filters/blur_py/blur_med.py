@@ -5,4 +5,5 @@ img=cv2.imread(image, cv2.IMREAD_UNCHANGED)
 
 blur=cv2.medianBlur(img,5)
 
-cv2.imwrite('../../images/abc_blur_med.jpg',blur)
+if cv2.imwrite('../../images/abc_blur_med.jpg',blur): print('success',end='')
+else: print('failed',end='')
