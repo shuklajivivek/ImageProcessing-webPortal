@@ -55,5 +55,13 @@
 			<li><a href="filters/img_grad_php/soby.php">Sobel Y</a></li>
 		</ul>
 	</div>
+	
+	<div id="filter-box" class="zoomdiv" style='height: 210px; width: 400px;'>
+		<h2>Canny Edge Detection</h2>
+		<ul>
+			<li><a href="filters/canny_php/canny.php">Apply Edge Detection</a></li>
+		</ul>
+	</div>
+	
 </body>
 </html>
