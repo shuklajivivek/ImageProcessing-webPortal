@@ -29,7 +29,7 @@
 	<a href="index.php" class="btn blue-gradient btn-sm" role="button" style='font-family:century gothic'><b>BACK</b></a>
 	</div></div>
 
-	<div class='row'>
+	<div class='row'> <!-- ROW 1 BEGINS -->
 	<div class='col-md-4'>
 	<div id="filter-box" class="zoomdiv" style='height: 340px; width: 400px; margin-left: 40px;'>
 		<h2>Image Blurring</h2>
@@ -68,16 +68,28 @@
 			<li><a href="filters/img_grad_php/soby.php">Sobel Y</a></li>
 		</ul>
 	</div></div>
-	</div>
+	</div> <!-- ROW 1 ENDS -->
 
-	<div class="row">
+	<div class="row"> <!-- ROW 2 BEGINS-->
 	<div class='col-md-4'>
 	<div id="filter-box" class="zoomdiv" style='height: 210px; width: 400px; margin-left: 40px;'>
 		<h2>Canny Edge Detection</h2>
 		<ul>
 			<li><a href="filters/canny_php/canny.php">Apply Edge Detection</a></li>
 		</ul>
-	</div></div></div>
+	</div></div>
+	
+	<div class='col-md-4'>
+	<div id="filter-box" class="zoomdiv" style='height: 210px; width: 400px;'>
+		<h2>Histograms</h2>
+		<ul>
+			<li><a href="filters/histogram_php/hist_col.php">Plot Histogram For Color Image</a></li>
+			<li><a href="filters/histogram_php/hist_gray.php">Plot Histogram For Grayscale Image</a></li>
+		</ul>
+	</div></div>
+	
+	
+	</div> <!-- ROW 2 ENDS -->
 	</div> <!-- CONATINER DIV ENDS -->
 	
 </body>
