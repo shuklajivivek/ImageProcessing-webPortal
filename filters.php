@@ -42,17 +42,21 @@
 	</div></div>
 	
 	<div class='col-md-4'>
-	<div id="filter-box" class="zoomdiv" style='width: 450px; height: 510px'>
+	<div id="filter-box" class="zoomdiv" style='width: 450px; height: 360px'>
 		<h2>Morphological Transformation</h2>
+		<div class="row"><div class="col-sm-6">
 		<ul>
-		      <li><a href="filters/morph_trans_php/erosion.php">Erosion</a></li>
-		      <li><a href="filters/morph_trans_php/dilation.php">Dilation</a></li>
-			  <li><a href="filters/morph_trans_php/open.php">Opening</a></li>
-			  <li><a href="filters/morph_trans_php/close.php">Closing</a></li>
-			  <li><a href="filters/morph_trans_php/grad.php">Morphological Gradient</a></li>
-			  <li><a href="filters/morph_trans_php/that.php">Top Hat</a></li>
-			  <li><a href="filters/morph_trans_php/bhat.php">Black Hat</a></li>
-		</ul>
+		    <li><a href="filters/morph_trans_php/erosion.php">Erosion</a></li>
+		    <li><a href="filters/morph_trans_php/dilation.php">Dilation</a></li>
+			<li><a href="filters/morph_trans_php/open.php">Opening</a></li>
+			<li><a href="filters/morph_trans_php/close.php">Closing</a></li>
+		</ul></div>
+		<div class="col-sm-6">
+		<ul>
+			<li><a href="filters/morph_trans_php/grad.php">Morphological Gradient</a></li>
+			<li><a href="filters/morph_trans_php/that.php">Top Hat</a></li>
+			<li><a href="filters/morph_trans_php/bhat.php">Black Hat</a></li>
+		</ul></div></div>
 	</div></div>
 	
 	<div class='col-md-4'>
