@@ -80,11 +80,12 @@
 	</div></div>
 	
 	<div class='col-md-4'>
-	<div id="filter-box" class="zoomdiv" style='height: 210px; width: 400px;'>
+	<div id="filter-box" class="zoomdiv" style='height: 270px; width: 400px;'>
 		<h2>Histograms</h2>
 		<ul>
 			<li><a href="filters/histogram_php/hist_col.php">Plot Histogram For Color Image</a></li>
 			<li><a href="filters/histogram_php/hist_gray.php">Plot Histogram For Grayscale Image</a></li>
+			<li><a href="filters/histogram_php/hist_gray_eq.php">Equalization For Grayscale Image</a></li>
 		</ul>
 	</div></div>
 	

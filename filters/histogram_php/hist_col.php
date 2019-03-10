@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$result=shell_exec('python ../histogram_py/hist_gray.py');
+	$result=shell_exec('python ../histogram_py/hist_col.py');
 	if(strcasecmp($result,'success')==0)
 	{
 		//set session variables for use in display.php
