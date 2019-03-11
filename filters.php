@@ -26,7 +26,7 @@
 	<h1>CHOOSE &nbsp;&nbsp;FILTERS <img src="img/filter.png"></h1>
 	</div></div>
 	<div class='col-md-1'>
-	<a href="index.php" class="btn blue-gradient btn-sm" role="button" style='font-family:century gothic'><b>BACK</b></a>
+	<a href="index.php" class="btn btn-outline-info waves-effect"><i class="fas fa-chevron-circle-left fa-lg"></i></a>
 	</div></div>
 
 	<div class='row'> <!-- ROW 1 BEGINS -->

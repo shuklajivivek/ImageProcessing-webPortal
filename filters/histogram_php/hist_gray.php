@@ -24,6 +24,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<link href="../../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../css/mdb.min.css" rel="stylesheet">
 	<style>
 		.img-box
 		{
@@ -36,9 +37,10 @@
 	<div class="container-fluid">
 		<div class="row img-box" style="margin:10px;">
 			<div class="col-md-10"><h2>Image Processing</h2></div>
-			<div class="col-md-2">
-			<a href="../../filters.php" class="btn btn-primary" role="button">Back</a>
-			<a href="../../index.php" class="btn btn-success" role="button">Home</a>
+			<div class="col-md-1">
+			<a href="../../filters.php" class="btn peach-gradient waves-effect" role="button">Back</a></div>
+			<div class="col-md-1">
+			<a href="../../index.php" class="btn purple-gradient waves-effect" role="button">Home</a></div>
 			</div>
 		</div><br><br>
 		<div class="row">
