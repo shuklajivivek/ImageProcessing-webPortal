@@ -123,7 +123,19 @@
 				</div>
 			</div>
 		</div> <!-- ROW 2 ENDS -->
-	
+		
+		<div class="row"> <!-- ROW 3 BEGINS-->
+			<div class='col-md-4'>
+				<div id="filter-box" class="zoomdiv" style='height: 280px; width: 400px; margin-left: 40px;'>
+					<h2>Gaussian Noise Reduction</h2>
+					<ul>
+						<li><a href="filters/noise_reduc_php/noise_reduc.php">Noise Reduction</a></li>
+						<li><a href="filters/noise_reduc_php/noise_reduc_bw.php">Noise Reduction For Grayscale Image</a></li>
+					</ul>
+				</div>
+			</div>
+		</div> <!-- ROW 3 ENDS -->
+
 	</div> <!-- CONATINER DIV ENDS -->
 	
 </body>
