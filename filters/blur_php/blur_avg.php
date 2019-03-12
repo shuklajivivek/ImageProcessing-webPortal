@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$cmd='python ../blur_py/blur_avg.py "'.$_SESSION['fname'].'" '.$_SESSION['fext'];
+	$cmd='python ../blur_py/blur_avg.py "'.$_SESSION['fname'].'" '.$_SESSION['fext'].' '.$_SESSION['kwidth'].' '.$_SESSION['kheight'];
 	$cout=shell_exec($cmd);
 
 	if(!(strcasecmp($cout,'failed')==0))

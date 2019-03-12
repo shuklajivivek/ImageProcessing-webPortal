@@ -32,16 +32,23 @@
 			</div>
 		</div>
 
+		<?php
+			include 'filters/blur_php/avg_modal.php';
+		?>
+
 		<div class='row'> <!-- ROW 1 BEGINS -->
 			<div class='col-md-4'>
 				<div id="filter-box" class="zoomdiv" style='height: 340px; width: 400px; margin-left: 40px;'>
 					<h2>Image Blurring</h2>
-					<ul>
+					<div class="row">
+						<button type="button" class="btn btn-primary"  style="margin-left:80px" data-toggle="modal" data-target="#blur_avg">Averaging</button>
+					</div>
+					<!--<ul>
 						<li><a href="filters/blur_php/blur_avg.php">Averaging</a></li>
 						<li><a href="filters/blur_php/blur_gauss.php">Gaussian Blurring</a></li>
 						<li><a href="filters/blur_php/blur_med.php">Median Blurring</a>
 						<li><a href="filters/blur_php/blur_bilat.php">Bilateral Filtering</a></li>
-					</ul>
+					</ul>-->
 				</div>
 			</div>
 			<div class='col-md-4'>
