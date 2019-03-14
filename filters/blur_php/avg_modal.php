@@ -15,7 +15,7 @@
 		<!-- Modal Header -->
 			<div class="modal-header">
 				<h4 class="modal-title">Image Smoothing &#8658; Averaging</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal"><i class="fas fa-times-circle"></i></button>
 			</div>
         
         <!-- Modal body -->
@@ -26,7 +26,6 @@
 				Specify the Width and Height of kernel.
 			</div>
 			<?php
-				//session_start();
 				if(isset($_SESSION['fname']))
 				{
 					$imgpath='images/'.$_SESSION['fname'];
@@ -40,7 +39,7 @@
 				<input type="range" class="custom-range" id="width" name="kwidth" value="1" min="1" max=<?php echo '"'.$_SESSION['width'].'"'; ?>>
 				<label for="height">Height : <span id="hval">0</span></label>
 				<input type="range" class="custom-range" id="height" name="kheight" value="1" min="1" max=<?php echo '"'.$_SESSION['height'].'"'; ?>>
-				
+				<!-- Javascript to show range values -->
 				<script>
 					var width = document.getElementById("width");
 					var wval = document.getElementById("wval");
@@ -59,9 +58,11 @@
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" name="submit">Submit</button></form>
+			<div class="spinner-border text-success" role="status" style="display:none" id="load"><span class="sr-only"></span></div>
+			<button type="submit" class="btn btn-primary waves-effect" name="submit" onclick="document.getElementById('load').style.display='inline'">Apply</button></form>
         </div>
         
       </div>
     </div>
 </div>
+<!-- Averaging Modal Ends -->
