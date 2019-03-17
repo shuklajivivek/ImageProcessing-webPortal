@@ -5,7 +5,11 @@
 	$outfile=$tmpname.'_neg.'.$_SESSION['fext'];
 	$outimg='../../images/'.$tmpname.'_neg.'.$_SESSION['fext'];
 
+<<<<<<< HEAD
 	$cmd='python34 ../img_negative_py/negative.py "../../images/'.$_SESSION['fname'].'" "'.$outimg.'"';
+=======
+	$cmd='python ../img_negative_py/negative.py "../../images/'.$_SESSION['fname'].'" "'.$outimg.'"';
+>>>>>>> 64170ba... image negative
 	$cout=shell_exec($cmd);
 
 	if(!(strcasecmp($cout,'failed')==0))
