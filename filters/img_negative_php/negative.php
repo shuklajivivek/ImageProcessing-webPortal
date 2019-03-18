@@ -5,7 +5,7 @@
 	$outfile=$tmpname.'_neg.'.$_SESSION['fext'];
 	$outimg='../../images/'.$tmpname.'_neg.'.$_SESSION['fext'];
 
-	$cmd='python ../img_negative_py/negative.py "../../images/'.$_SESSION['fname'].'" "'.$outimg.'"';
+	$cmd='python34 ../img_negative_py/negative.py "../../images/'.$_SESSION['fname'].'" "'.$outimg.'"';
 	$cout=shell_exec($cmd);
 
 	if(!(strcasecmp($cout,'failed')==0))

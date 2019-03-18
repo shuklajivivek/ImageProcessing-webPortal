@@ -67,13 +67,15 @@
 				</div>
 			</div>
 			<div class='col-md-4'>
-				<div id="filter-box" class="zoomdiv" style='height: 340px; width: 400px;'>
+				<div id="filter-box" class="zoomdiv" style='height: 410px; width: 400px;'>
 					<h2>Image Gradients</h2>
 					<ul>
-						<li><a href="filters/img_grad_php/lap.php">Laplacian Derivatives</a></li>
 						<li><a href="filters/img_grad_php/sobx.php">Sobel X</a></li>
 						<li><a href="filters/img_grad_php/soby.php">Sobel Y</a></li>
+						<li><a href="filters/img_grad_php/Alpha_prewitt.php">Alpha Prewitt</a></li>
+						<li><a href="filters/img_grad_php/M_prewitt.php">M Prewitt</a></li>
 						<li><a href="filters/canny_php/canny.php">Canny Edge Detection</a></li>
+						<li><a href="filters/img_grad_php/lap.php">Laplacian Derivatives</a></li>
 					</ul>
 				</div>
 			</div>
